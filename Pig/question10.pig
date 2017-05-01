@@ -41,7 +41,7 @@ joined= join totalcertified by $0,totalcertifiedwithdrawn by $0,total by $0;
 joined= foreach joined generate $0,$1,$3,$5;
 intermediateoutput= foreach joined generate $0,(float)($1+$2)*100/($3),$3;
 intermediateoutput2= filter intermediateoutput by $1>70 and $2>1000;	--Filter by success-rate greater than 70% and petition count above 1000
-intermediateoutput3= order intermediateoutput2 by $1 DESC;
-finaloutput= limit intermediateoutput3 10; --ANSWER
+finaloutput= order intermediateoutput2 by $1 DESC;
+
 --STORE DATA INTO TEXT FILE
 store finaloutput into '/home/mohith/Pig/question10' using PigStorage('\t');
