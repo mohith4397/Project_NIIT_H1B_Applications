@@ -106,7 +106,7 @@ show_menu
 		start-all.sh
 		sleep 6
         option_picked "7) Create a bar graph to depict the number of applications for each year";
-		hive -e "select year,count(*) as applications  from h1b_applications group by  year;"
+		hive -e "select year,count(*) as applications  from h1b_applications where year like '201%' group by  year;"
         show_menu;
         ;;
 		10) clear;
